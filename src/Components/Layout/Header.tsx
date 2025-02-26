@@ -9,7 +9,9 @@ function Header() {
       <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
+          <NavLink className="nav-link" aria-current="page" to="/">
             <img src={logo} style={{ height: "40px" }} className="m-1" />
+            </NavLink>
           </a>
           <button
             className="navbar-toggler"
@@ -27,6 +29,11 @@ function Header() {
               <li className="nav-item">
                 <NavLink className="nav-link" aria-current="page" to="/">
                   Home
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" aria-current="page" to="/shoppingCart">
+                  <i className="bi bi-cart"></i>
                 </NavLink>
               </li>
               <li className="nav-item dropdown">
