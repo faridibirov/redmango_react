@@ -4,7 +4,7 @@ import { menuItemModel } from "../../../../Interfaces";
 import MenuItemCard from "./MenuItemCard";
 import { useGetMenuItemsQuery } from "../../../../Apis/menuItemApi";
 import { useDispatch } from "react-redux";
-import { setMenuItem } from "../../../../Storage/Redux/menuItemSlide";
+import { setMenuItem } from "../../../../Storage/Redux/menuItemSlice";
 import { MainLoader } from "../Common";
 
 function MenuItemList() {
