@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { Footer, Header } from "../Components/Layout";
 import {
+  AccessDenied,
+  AuthenticationTest,
+  AuthenticationTestAdmin,
   Home,
   Login,
   MenuItemDetails,
@@ -9,20 +12,21 @@ import {
   ShoppingCart,
 } from "../Pages";
 import { Routes, Route } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useGetShoppingCartQuery } from "../Apis/shoppingCartApi";
 import { setShoppingCart } from "../Storage/Redux/shoppingCartSlice";
 import { userModel } from "../Interfaces";
 import { setLoggedInUser } from "../Storage/Redux/userAuthSlice";
 import jwt_decode from "jwt-decode";
+import { RootState } from "../Storage/Redux/store";
 
 function App() {
   const dispatch = useDispatch();
-
-  const { data, isLoading } = useGetShoppingCartQuery(
-    "177a6f00-3db6-4d31-9576-32c291b61bb5" //comp-work
-    //"cddfb495-2e67-4d06-ad5b-647ce30ed950" //home-comp
+  const userData: userModel = useSelector(
+    (state: RootState) => state.userAuthStore
   );
+
+  const { data, isLoading } = useGetShoppingCartQuery(userData.id);
 
   useEffect(() => {
     const localToken = localStorage.getItem("token");
@@ -35,7 +39,7 @@ function App() {
   useEffect(() => {
     if (!isLoading) {
       console.log(data.result);
-      dispatch(setShoppingCart(data.result.cartItems));
+      dispatch(setShoppingCart(data.result?.cartItems));
     }
   }, [data]);
 
@@ -52,6 +56,16 @@ function App() {
           <Route path="/shoppingCart" element={<ShoppingCart />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
+
+          <Route
+            path="/authentication"
+            element={<AuthenticationTest />}
+          ></Route>
+          <Route
+            path="/authorization"
+            element={<AuthenticationTestAdmin />}
+          ></Route>
+          <Route path="/accessDenied" element={<AccessDenied />}></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </div>

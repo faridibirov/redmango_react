@@ -61,10 +61,8 @@ function Header() {
                   aria-current="page"
                   to="/shoppingCart"
                 >
-                  <i className="bi bi-cart"></i>{" "}
-                  {shoppingCartFromStore?.length
-                    ? `(${shoppingCartFromStore.length})`
-                    : ""}
+                  <i className="bi bi-cart"></i>
+                  {userData.id && `(${shoppingCartFromStore.length})`}
                 </NavLink>
               </li>
               <li className="nav-item dropdown">
