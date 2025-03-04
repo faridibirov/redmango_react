@@ -1,12 +1,9 @@
 import React from "react";
-import { cartItemModel } from "../../../../Interfaces";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../../Storage/Redux/store";
-import {
-  removeFromCart,
-  updateQuantity,
-} from "../../../../Storage/Redux/shoppingCartSlice";
-import { useUpdateShoppingCartMutation } from "../../../../Apis/shoppingCartApi";
+import { useUpdateShoppingCartMutation } from "../../../Apis/shoppingCartApi";
+import { cartItemModel } from "../../../Interfaces";
+import { RootState } from "../../../Storage/Redux/store";
+import { removeFromCart, updateQuantity } from "../../../Storage/Redux/shoppingCartSlice";
 
 function CartSummary() {
   const dispatch = useDispatch();

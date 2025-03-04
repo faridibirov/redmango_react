@@ -1,5 +1,5 @@
 import React from "react";
-import { CartSummary, CartPickUpDetails } from "../Components/Layout/Page/Cart";
+import { CartSummary, CartPickUpDetails } from "../Components/Page/Cart";
 
 function ShoppingCart() {
   return (
