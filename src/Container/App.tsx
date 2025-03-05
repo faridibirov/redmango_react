@@ -8,6 +8,7 @@ import {
   Login,
   MenuItemDetails,
   NotFound,
+  Payment,
   Register,
   ShoppingCart,
 } from "../Pages";
@@ -38,7 +39,7 @@ function App() {
 
   useEffect(() => {
     if (!isLoading) {
-      console.log(data.result);
+      console.log(data);
       dispatch(setShoppingCart(data.result?.cartItems));
     }
   }, [data]);
@@ -66,6 +67,7 @@ function App() {
             element={<AuthenticationTestAdmin />}
           ></Route>
           <Route path="/accessDenied" element={<AccessDenied />}></Route>
+          <Route path="/payment" element={<Payment />}></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </div>
