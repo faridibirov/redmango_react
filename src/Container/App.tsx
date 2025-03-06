@@ -7,7 +7,9 @@ import {
   Home,
   Login,
   MenuItemDetails,
+  MyOrders,
   NotFound,
+  OrderConfirmed,
   Payment,
   Register,
   ShoppingCart,
@@ -39,7 +41,6 @@ function App() {
 
   useEffect(() => {
     if (!isLoading) {
-      console.log(data);
       dispatch(setShoppingCart(data.result?.cartItems));
     }
   }, [data]);
@@ -68,6 +69,11 @@ function App() {
           ></Route>
           <Route path="/accessDenied" element={<AccessDenied />}></Route>
           <Route path="/payment" element={<Payment />}></Route>
+          <Route path="/order/myorders" element={<MyOrders />}></Route>
+          <Route
+            path="/order/orderConfiremd/:id"
+            element={<OrderConfirmed />}
+          ></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </div>
