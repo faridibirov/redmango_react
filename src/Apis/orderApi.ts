@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { OrderDetails } from "../Pages";
 
 const orderApi = createApi({
   reducerPath: "orderApi",
@@ -33,6 +34,17 @@ const orderApi = createApi({
       }),
       providesTags: ["Orders"],
     }),
+    updateOrderHeader: builder.mutation({
+      query: (orderDetails) => ({
+        url: "order/" + orderDetails.orderHeaderId,
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: orderDetails,
+      }),
+      invalidatesTags: ["Orders"],
+    }),
   }),
 });
 
@@ -40,5 +52,6 @@ export const {
   useInitiateOrderMutation,
   useGetAllOrdersQuery,
   useGetOrderDetailsQuery,
+  useUpdateOrderHeaderMutation,
 } = orderApi;
 export default orderApi;

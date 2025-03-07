@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Footer, Header } from "../Components/Layout";
 import {
   AccessDenied,
+  AllOrders,
   AuthenticationTest,
   AuthenticationTestAdmin,
   Home,
@@ -10,6 +11,7 @@ import {
   MyOrders,
   NotFound,
   OrderConfirmed,
+  OrderDetails,
   Payment,
   Register,
   ShoppingCart,
@@ -70,6 +72,11 @@ function App() {
           <Route path="/accessDenied" element={<AccessDenied />}></Route>
           <Route path="/payment" element={<Payment />}></Route>
           <Route path="/order/myorders" element={<MyOrders />}></Route>
+          <Route path="/order/allorders" element={<AllOrders />}></Route>
+          <Route
+            path="/order/orderDetails/:id"
+            element={<OrderDetails />}
+          ></Route>
           <Route
             path="/order/orderConfiremd/:id"
             element={<OrderConfirmed />}
