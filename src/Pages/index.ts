@@ -12,8 +12,12 @@ import OrderConfirmed from "./Order/OrderConfirmed";
 import MyOrders from "./Order/MyOrders";
 import OrderDetails from "./Order/OrderDetails";
 import AllOrders from "./Order/AllOrders";
+import MenuItemList from "./MenuItemDetails";
+import MenuItemUpsret from "./MenuItem/MenuItemUpsret";
 
 export {
+  MenuItemUpsret,
+  MenuItemList,
   Home,
   NotFound,
   MenuItemDetails,

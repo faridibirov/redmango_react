@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { MiniLoader } from "../Common";
 import { apiResponse, cartItemModel, userModel } from "../../../Interfaces";
@@ -40,6 +40,14 @@ export default function CartPickUpDetails() {
     const tempData = inputHelper(e, userInput);
     setUserInput(tempData);
   };
+
+  useEffect(() => {
+    setUserInput({
+      name: userData.fullName,
+      email: userData.email,
+      phoneNumber: "",
+    });
+  }, [userData]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

@@ -8,6 +8,7 @@ import {
   Home,
   Login,
   MenuItemDetails,
+  MenuItemUpsret,
   MyOrders,
   NotFound,
   OrderConfirmed,
@@ -24,6 +25,7 @@ import { userModel } from "../Interfaces";
 import { setLoggedInUser } from "../Storage/Redux/userAuthSlice";
 import jwt_decode from "jwt-decode";
 import { RootState } from "../Storage/Redux/store";
+import MenuItemList from "../Pages/MenuItem/MenuItemList";
 
 function App() {
   const dispatch = useDispatch();
@@ -73,6 +75,18 @@ function App() {
           <Route path="/payment" element={<Payment />}></Route>
           <Route path="/order/myorders" element={<MyOrders />}></Route>
           <Route path="/order/allorders" element={<AllOrders />}></Route>
+          <Route
+            path="/menuItem/menuItemUpsert/:id"
+            element={<MenuItemUpsret />}
+          ></Route>
+          <Route
+            path="/menuItem/menuItemUpsert"
+            element={<MenuItemUpsret />}
+          ></Route>
+          <Route
+            path="/menuItem/menuitemlist"
+            element={<MenuItemList />}
+          ></Route>
           <Route
             path="/order/orderDetails/:id"
             element={<OrderDetails />}
