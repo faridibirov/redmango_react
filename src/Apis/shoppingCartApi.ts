@@ -4,6 +4,10 @@ const shoppingCartApi = createApi({
   reducerPath: "shoppingCartApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://localhost:7037/api/",
+    prepareHeaders: (headers: Headers, api) => {
+      const token = localStorage.getItem("token");
+      token && headers.append("Authorization", "Bearer " + token);
+    },
   }),
   tagTypes: ["ShoppingCarts"],
 
@@ -25,10 +29,11 @@ const shoppingCartApi = createApi({
           userId,
         },
       }),
-      invalidatesTags: ["ShoppingCarts"]
+      invalidatesTags: ["ShoppingCarts"],
     }),
   }),
 });
 
-export const { useGetShoppingCartQuery, useUpdateShoppingCartMutation } = shoppingCartApi;
+export const { useGetShoppingCartQuery, useUpdateShoppingCartMutation } =
+  shoppingCartApi;
 export default shoppingCartApi;
